@@ -9,7 +9,7 @@ import (
 func main() {
 	arr := []int{10, 20, 30, 40, 50}
 	arr = append(arr, 60)
-	user := map[string]interface{}{
+	user := map[string]any{
 		"name":      "John",
 		"age":       "30",
 		"city":      "New York",
