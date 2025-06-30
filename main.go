@@ -1,32 +1,21 @@
 package main
 
 import (
-	"myproject/rand"
-
-	"github.com/k0kubun/pp"
+	"fmt"
+	"math/big"
 )
 
 func main() {
-	arr := []int{10, 20, 30, 40, 50}
-	arr = append(arr, 60)
-	user := map[string]any{
-		"name":      "John",
-		"age":       "30",
-		"city":      "New York",
-		"job":       "Developer",
-		"salary":    "1000",
-		"isMarried": arr,
+	for i := int64(0); i < 10000; i++ {
+		fmt.Println(i, "-", factorial(big.NewInt(i)))
 	}
-
-	pp.Println(user)
-	pp.Println(arr)
-	rand.Random()
 }
 
-func factorial(x uint) uint {
-	if x == 0 {
-		return 1
+func factorial(n *big.Int) *big.Int {
+	result := big.NewInt(1)
+	one := big.NewInt(1)
+	for i := big.NewInt(2); i.Cmp(n) <= 0; i.Add(i, one) {
+		result.Mul(result, i)
 	}
-
-	return x * factorial(x-1)
+	return result
 }
